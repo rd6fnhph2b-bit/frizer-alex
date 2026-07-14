@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Scissors, Star, MapPin, Phone, Clock, Quote, CheckCircle2, ChevronRight, X } from 'lucide-react';
 
 // --- BAZA PODATAKA ---
