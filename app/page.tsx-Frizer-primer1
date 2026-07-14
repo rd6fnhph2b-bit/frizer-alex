@@ -1,0 +1,266 @@
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Scissors, Star, MapPin, Phone, Clock, ChevronRight, Quote, CheckCircle2 } from 'lucide-react';
+
+// --- DATA SCENARIO BASED ON VARIABLES ---
+const services = [
+  { id: 1, name: 'Klasično Šišanje', price: '1000 RSD', desc: 'Vrhunska usluga, tačno onako kako vi tražite.', popular: false },
+  { id: 2, name: 'Šišanje Fade', price: '1300 RSD', desc: 'Precizan postepeni prelaz mašinicom.', popular: true },
+  { id: 3, name: 'Štucovanje Brade', price: '500 RSD', desc: 'Brzo osvežavanje i oblikovanje.', popular: false },
+  { id: 4, name: 'Brada Fade', price: '700 RSD', desc: 'Moderno sređivanje brade sa prelazom.', popular: false },
+  { id: 5, name: 'Pranje Kose', price: '400 RSD', desc: 'Priprema ili finiš uz blagu masažu.', popular: false },
+];
+
+const reviews = [
+  {
+    id: 1,
+    text: "Uvek naprave frizuru tačnu kako im vi kažete i uvek bez mane. Zaposleni su veoma ljubazni i prijatni. Odlična frizura za svačiji džep!",
+    author: "Zadovoljni Klijent",
+  },
+  {
+    id: 2,
+    text: "Professional service. The guy was very straightforward and finished the haircut exactly as requested. Best in Prvomajska.",
+    author: "Local Guide",
+  },
+  {
+    id: 3,
+    text: "Odlican frizer, mnogo dobro sisaju, za mene jedan od najboljih u Zemunu. Nije skupo a super šišaju za svaku pohvalu!",
+    author: "Stalna Mušterija",
+  },
+];
+
+// --- ANIMATION VARIANTS ---
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+export default function AlexBarberPage() {
+  return (
+    <div className="min-h-screen bg-[#0f1115] text-slate-200 font-sans selection:bg-blue-900/30">
+      
+      {/* HERO SECTION */}
+      <section className="relative min-h-[90vh] flex items-center justify-center pt-20 pb-16 px-4 overflow-hidden">
+        {/* Background Image with Heavy Modern Overlay (No vintage vibes, just clean dark glass) */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://picsum.photos/seed/hairsalon/1920/1080" 
+            alt="Muški frizer Alex" 
+            className="w-full h-full object-cover opacity-30 grayscale"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0f1115]/80 via-[#0f1115]/95 to-[#0f1115]" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700/50 backdrop-blur-sm text-sm text-slate-300"
+          >
+            <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+            <span>4.6/5 na osnovu 27 recenzija</span>
+          </motion.div>
+
+          <motion.h1 
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            className="text-5xl md:text-7xl font-extrabold tracking-tight text-white"
+          >
+            Muški Frizer <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 to-slate-500">Alex</span>
+          </motion.h1>
+
+          <motion.p 
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed"
+          >
+            Bez previše filozofije. Samo vrhunska usluga, ozbiljna stručnost i frizura tačno onakva kakvu ste tražili. Vaš pouzdan salon u Zemunu.
+          </motion.p>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+          >
+            <a href="tel:0638345007" className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-slate-100 hover:bg-white text-slate-950 font-bold rounded-lg transition-colors">
+              <Phone className="w-5 h-5" />
+              Zakaži Termin
+            </a>
+            <a href="#cenovnik" className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-slate-800/50 hover:bg-slate-800 border border-slate-700 text-white font-medium rounded-lg backdrop-blur-sm transition-all">
+              Pogledaj Usluge
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SERVICES / MENU SECTION */}
+      <section id="cenovnik" className="py-24 px-4 bg-[#0f1115]">
+        <div className="max-w-3xl mx-auto">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+              <Scissors className="w-8 h-8 text-slate-500" /> Cenovnik Usluga
+            </h2>
+            <p className="text-slate-400">Povoljne cene, beskompromisan kvalitet. Svačiji džep, svačiji stil.</p>
+          </motion.div>
+
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            {services.map((service) => (
+              <motion.div 
+                key={service.id}
+                variants={fadeIn}
+                className={`relative overflow-hidden group rounded-2xl p-6 transition-all duration-300 border ${
+                  service.popular 
+                    ? 'bg-slate-800/40 border-slate-600' 
+                    : 'bg-slate-900/20 border-slate-800/50 hover:bg-slate-800/30'
+                } backdrop-blur-md`}
+              >
+                <div className="flex justify-between items-center sm:items-start relative z-10">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-xl font-semibold text-slate-100">{service.name}</h3>
+                      {service.popular && (
+                        <span className="bg-slate-100 text-slate-900 text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">
+                          Preporuka
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-slate-400">{service.desc}</p>
+                  </div>
+                  <div className="text-right pl-4">
+                    <span className="text-lg font-bold text-white whitespace-nowrap">{service.price}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* REVIEWS SECTION */}
+      <section className="py-24 px-4 bg-slate-900/20 border-t border-slate-800/50">
+        <div className="max-w-6xl mx-auto">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4">Šta kažu naše mušterije</h2>
+            <p className="text-slate-400">Neki od razloga zašto nas Zemun bira.</p>
+          </motion.div>
+
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            {reviews.map((review) => (
+              <motion.div 
+                key={review.id}
+                variants={fadeIn}
+                className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 relative"
+              >
+                <Quote className="absolute top-6 right-6 w-8 h-8 text-slate-700/50" />
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                  ))}
+                </div>
+                <p className="text-slate-300 italic mb-6 text-sm leading-relaxed">
+                  "{review.text}"
+                </p>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center">
+                    <span className="text-slate-400 font-bold text-xs">{review.author.charAt(0)}</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-slate-200">{review.author}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FOOTER / CONTACT SECTION */}
+      <footer className="bg-[#0a0b0e] py-16 px-4 border-t border-slate-800/80">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+          
+          {/* Info */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-2">Muški Frizer Alex</h3>
+              <p className="text-slate-400">Najbolje šišanje u Zemunu.</p>
+            </div>
+            
+            <div className="space-y-4 text-slate-300">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-slate-500 shrink-0 mt-0.5" />
+                <p>Prvomajska 36d<br/>Beograd 11080, Zemun</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-slate-500 shrink-0" />
+                <p>063 834 5007</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Radno vreme */}
+          <div className="bg-slate-900/30 p-8 rounded-2xl border border-slate-800/50">
+            <h4 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+              <Clock className="w-5 h-5 text-slate-500" /> Radno Vreme
+            </h4>
+            <ul className="space-y-4">
+              <li className="flex justify-between items-center text-slate-300 border-b border-slate-800 pb-2">
+                <span>Ponedeljak - Petak</span>
+                <span className="font-medium">09:00 - 20:00</span>
+              </li>
+              <li className="flex justify-between items-center text-slate-300 border-b border-slate-800 pb-2">
+                <span>Subota</span>
+                <span className="font-medium">09:00 - 16:00</span>
+              </li>
+              <li className="flex justify-between items-center text-slate-500">
+                <span>Nedelja</span>
+                <span>Zatvoreno</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto mt-16 pt-8 border-t border-slate-800/50 text-center text-slate-500 text-sm">
+          &copy; {new Date().getFullYear()} Muški Frizer Alex. Sva prava zadržana.
+        </div>
+      </footer>
+    </div>
+  );
+}
