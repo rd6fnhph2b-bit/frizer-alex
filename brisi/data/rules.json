@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "no": "01",
+      "icon": "timer",
+      "title": "48 Hours. Zero Cost.",
+      "body": "A working prototype of your website lands in 48 hours with absolutely zero initial cost. See it live before you spend a cent."
+    },
+    {
+      "no": "02",
+      "icon": "wallet",
+      "title": "€50 / Month. Flat.",
+      "body": "One flat monthly fee covers premium Cloudflare hosting plus three updates every single month. No surprise invoices, ever."
+    },
+    {
+      "no": "03",
+      "icon": "git-branch",
+      "title": "You Own The Code.",
+      "body": "Absolute code ownership with immediate GitHub repo access. It's yours. Leave whenever you want and take everything with you."
+    },
+    {
+      "no": "04",
+      "icon": "zap",
+      "title": "Unfair Speed.",
+      "body": "Deployed on Cloudflare's global Edge Network so your site loads instantly, everywhere. Speed that competitors can't match."
+    }
+  ]
+}

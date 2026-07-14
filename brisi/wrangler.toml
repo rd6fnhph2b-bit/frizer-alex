@@ -1,0 +1,13 @@
+# Cloudflare deployment config for a STATIC Next.js export.
+# The site is built with `output: "export"` (see next.config.mjs), which emits
+# plain HTML/CSS/JS into the ./out directory. We deploy those files directly as
+# static assets — there is NO server-side Worker, so no `main` entry and no
+# service bindings (this removes the WORKER_SELF_REFERENCE error).
+
+name = "challenger-agency-landing-page"
+compatibility_date = "2026-07-12"
+
+[assets]
+directory = "./out"
+# Serve a nice 404 page for unknown routes instead of a blank error.
+not_found_handling = "404-page"

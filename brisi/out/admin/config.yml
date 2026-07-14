@@ -1,0 +1,31 @@
+backend:
+  name: github
+  repo: rd6fnhph2b-bit/challenger-agency-landing-page
+  branch: main
+  # Points at your OAuth provider (see the Cloudflare Worker note in chat).
+  # Replace with your deployed OAuth handler URL before going live.
+  base_url: https://YOUR-OAUTH-PROVIDER.example.workers.dev
+
+# Where Decap uploads media (unused for now, but required).
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: rules
+    label: "Landing — The Rules"
+    files:
+      - name: rules
+        label: "Rule Cards"
+        file: data/rules.json
+        fields:
+          - label: "Cards"
+            name: rules
+            widget: list
+            fields:
+              - { label: "Number", name: "no", widget: "string" }
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options: ["timer", "wallet", "git-branch", "zap"]
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
