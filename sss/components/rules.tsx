@@ -1,15 +1,31 @@
-import { Timer, Wallet, GitBranch, Zap, type LucideIcon } from "lucide-react"
-import rulesData from "@/data/rules.json"
+import { Timer, Wallet, GitBranch, Zap } from "lucide-react"
 
-// Map the icon keys stored in data/rules.json to real Lucide components.
-const ICONS: Record<string, LucideIcon> = {
-  timer: Timer,
-  wallet: Wallet,
-  "git-branch": GitBranch,
-  zap: Zap,
-}
-
-const RULES = rulesData.rules
+const RULES = [
+  {
+    no: "01",
+    icon: Timer,
+    title: "48 Hours. Zero Cost.",
+    body: "A working prototype of your website lands in 48 hours with absolutely zero initial cost. See it live before you spend a cent.",
+  },
+  {
+    no: "02",
+    icon: Wallet,
+    title: "€50 / Month. Flat.",
+    body: "One flat monthly fee covers premium Cloudflare hosting plus three updates every single month. No surprise invoices, ever.",
+  },
+  {
+    no: "03",
+    icon: GitBranch,
+    title: "You Own The Code.",
+    body: "Absolute code ownership with immediate GitHub repo access. It's yours. Leave whenever you want and take everything with you.",
+  },
+  {
+    no: "04",
+    icon: Zap,
+    title: "Unfair Speed.",
+    body: "Deployed on Cloudflare's global Edge Network so your site loads instantly, everywhere. Speed that competitors can't match.",
+  },
+]
 
 export function Rules() {
   return (
@@ -26,7 +42,7 @@ export function Rules() {
 
         <div className="grid gap-px border border-border bg-border sm:grid-cols-2">
           {RULES.map((rule) => {
-            const Icon = ICONS[rule.icon] ?? Timer
+            const Icon = rule.icon
             return (
               <article
                 key={rule.no}

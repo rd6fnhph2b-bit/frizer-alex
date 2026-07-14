@@ -8,7 +8,7 @@ export function SiteHeader() {
           <span className="flex h-8 w-8 items-center justify-center bg-primary">
             <span className="font-display text-lg leading-none text-primary-foreground">R</span>
           </span>
-          <span className="font-display text-xl tracking-tight">ROGUE test</span>
+          <span className="font-display text-xl tracking-tight">ROGUE - DEV</span>
         </a>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
