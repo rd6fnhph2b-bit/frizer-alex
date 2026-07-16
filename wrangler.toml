@@ -4,7 +4,7 @@
 # static assets — there is NO server-side Worker, so no `main` entry and no
 # service bindings (this removes the WORKER_SELF_REFERENCE error).
 
-name = "challenger-agency-landing-page"
+name = "frizer-alex"
 compatibility_date = "2026-07-12"
 
 [assets]
